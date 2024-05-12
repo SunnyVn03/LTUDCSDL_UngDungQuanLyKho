@@ -1,0 +1,15 @@
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\bin\Debug\QuanLyKhoHang.exe.config
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\bin\Debug\QuanLyKhoHang.exe
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\bin\Debug\QuanLyKhoHang.pdb
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.AssemblyReference.cache
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Frm_DangNhap.resources
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Frm_Main.resources
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Properties.Resources.resources
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.GenerateResource.cache
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.CoreCompileInputs.cache
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.exe
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.pdb
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\bin\Debug\DevComponents.DotNetBar2.dll
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_DSHangHoa_Main.resources
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Frm_Base.resources
+D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.CopyComplete
