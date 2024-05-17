@@ -1,6 +1,6 @@
-﻿namespace QuanLyKhoHang.DanhMuc
+﻿namespace QuanLyKhoHang.TacVu
 {
-    partial class Frm_DSNhaSX_Main
+    partial class Frm_QuanLyNhapKho
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Frm_DSNhaSX_Main";
+            this.Text = "Frm_QuanLyNhapKho";
         }
 
         #endregion
