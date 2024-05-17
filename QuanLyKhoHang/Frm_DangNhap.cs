@@ -30,7 +30,7 @@ namespace QuanLyKhoHang
 
         private void Frm_DangNhap_Load(object sender, EventArgs e)
         {
-            bd = new Bll_HeThong(ClsMain.path);
+            db = new Bll_HeThong(ClsMain.path);
         }
 
         private void btn_DangNhap_Click(object sender, EventArgs e)
