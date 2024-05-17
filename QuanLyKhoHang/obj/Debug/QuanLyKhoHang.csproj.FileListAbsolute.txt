@@ -13,3 +13,18 @@ D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\bin\Debug\DevComponents.DotNetBa
 D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_DSHangHoa_Main.resources
 D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Frm_Base.resources
 D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.CopyComplete
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\bin\Debug\QuanLyKhoHang.exe.config
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\bin\Debug\QuanLyKhoHang.exe
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\bin\Debug\QuanLyKhoHang.pdb
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.AssemblyReference.cache
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_DSHangHoa_Main.resources
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_DSNhaSX_Main.resources
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Frm_Base.resources
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Frm_DangNhap.resources
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Frm_Main.resources
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Properties.Resources.resources
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.GenerateResource.cache
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.CoreCompileInputs.cache
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.CopyComplete
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.exe
+D:\LapTrinhUngDungCSDL\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.pdb

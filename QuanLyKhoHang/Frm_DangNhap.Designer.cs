@@ -68,6 +68,7 @@
             this.btn_DangNhap.TabIndex = 2;
             this.btn_DangNhap.Text = "Đăng nhập";
             this.btn_DangNhap.UseVisualStyleBackColor = false;
+            this.btn_DangNhap.Click += new System.EventHandler(this.btn_DangNhap_Click);
             // 
             // lbl_DangNhap
             // 
@@ -114,6 +115,7 @@
             this.Controls.Add(this.txt_Username);
             this.Name = "Frm_DangNhap";
             this.Text = "Đăng nhập";
+            this.Load += new System.EventHandler(this.Frm_DangNhap_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

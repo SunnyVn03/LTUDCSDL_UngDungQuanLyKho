@@ -71,6 +71,7 @@
       <DependentUpon>Frm_BaoCaoTonKho.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessLayer\BLL_HeThong.cs" />
+    <Compile Include="Cls_Main.cs" />
     <Compile Include="DanhMuc\Frm_DSHangHoa_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +122,9 @@
     </Compile>
     <EmbeddedResource Include="DanhMuc\Frm_DSHangHoa_Main.resx">
       <DependentUpon>Frm_DSHangHoa_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DanhMuc\Frm_DSNhaSX_Main.resx">
+      <DependentUpon>Frm_DSNhaSX_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Base.resx">
       <DependentUpon>Frm_Base.cs</DependentUpon>

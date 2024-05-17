@@ -1,3 +1,4 @@
+using ProThucHienFormDangNhap;
 using QuanLyKhoHang.BusinessLayer;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace QuanLyKhoHang
             InitializeComponent();
         }
 
-        BLL_HeThong db;
+        BLL_HeThong bd;
         string err = string.Empty;
         DataTable dtNhanVien;
 
@@ -30,7 +31,7 @@ namespace QuanLyKhoHang
 
         private void Frm_DangNhap_Load(object sender, EventArgs e)
         {
-            db = new Bll_HeThong(ClsMain.path);
+            bd = new BLL_HeThong(Cls_Main.path);
         }
 
         private void btn_DangNhap_Click(object sender, EventArgs e)
@@ -41,7 +42,7 @@ namespace QuanLyKhoHang
                 {
                     if (KiemTraDangNhap(txt_Username.Text, txt_Password.Text))
                     {
-                        ClsMain.tenNhanVien = dtNhanVien.Rows[0]["TenNhanVien"].ToString();
+                        Cls_Main.tenNhanVien = dtNhanVien.Rows[0]["TenNhanVien"].ToString();
                         this.Close();
                     }
                     else
@@ -64,7 +65,8 @@ namespace QuanLyKhoHang
         private bool KiemTraDangNhap(string taiKhoan, string matKhau)
         {
             dtNhanVien = new DataTable();
-            dtNhanVien = db.KiemTraDangNhap(ref err, taiKhoan, matKhau);
+            dtNhanVien = bd.KiemTraDangNhap(ref err, taiKhoan, matKhau);
+            MessageBox.Show(err);
             if (dtNhanVien.Rows.Count > 0)
             {
                 if (dtNhanVien.Rows[0]["Code"].ToString().Equals("1"))
@@ -74,6 +76,5 @@ namespace QuanLyKhoHang
             }
             return false;
         }
-
     }
 }

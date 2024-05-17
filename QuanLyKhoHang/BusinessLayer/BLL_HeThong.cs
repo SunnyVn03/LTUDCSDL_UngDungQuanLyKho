@@ -24,7 +24,7 @@ namespace QuanLyKhoHang.BusinessLayer
                 new SqlParameter("@TaiKhoan",taiKhoan),
                 new SqlParameter("@MatKhau",matKhau)
             };
-            return db.GetDataTable(ref err, "KiemTraDangNhap", CommandType.StoredProcedure, sqlParameters);
+            return db.GetDataTable(ref err, "NhanVien_KiemTraDangNhap", CommandType.StoredProcedure, sqlParameters);
         }
     }
 }
