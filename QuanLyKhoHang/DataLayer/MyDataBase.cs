@@ -19,7 +19,8 @@ namespace QuanLyKhoHang.DataLayer
         public MyDatabase(string path)
         {
             connectionStringManager = new ConnectionStringManager();
-            conn = new SqlConnection(connectionStringManager.ReadConnectionString(ref err, path).ConnectionString);
+            //conn = new SqlConnection(connectionStringManager.ReadConnectionString(ref err, path).ConnectionString);
+            conn = new SqlConnection("Data Source=tsukoyumi;Database=QuanLyKhoHang;Integrated Security=True;Connect Timeout=30;Encrypt=False");
         }
 
         public bool CheckConnect(ref string err)
