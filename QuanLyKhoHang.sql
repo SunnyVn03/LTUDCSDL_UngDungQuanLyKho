@@ -1,7 +1,11 @@
-﻿create database QuanLyKhoHang
+create database QuanLyKhoHang
 go
 use QuanLyKhoHang
 go
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
 CREATE TABLE NhaCungCap (
   MaNhaCungCap INT IDENTITY PRIMARY KEY,
   TenNhaCungCap VARCHAR(255) NOT NULL,
@@ -71,12 +75,15 @@ CREATE TABLE ChitietPhieuXuat (
 );
 go
 
+-- nhập dữ liệu vào data
+Insert into NhanVien(TenNhanVien,TaiKhoan,MatKhau) values
+	(N'Nguyen Van A','admin',PWDENCRYPT('123456')),
+	(N'Nguyen Van A','user',PWDENCRYPT('123456')),
+	(N'Nguyen Van A','user1',PWDENCRYPT('123456'))
+go
+
 -- kiểm tra đăng nhập
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-create proc dbo.NhanVien_KiemTraDangNhap
+create proc KiemTraDangNhap
 @TaiKhoan varchar(50),
 @MatKhau varchar(50)
 as
@@ -90,3 +97,4 @@ else
 begin 
 	select 0 as Code,'' as MaNhanVien,N'' as TenNhanVien
 End
+Go
