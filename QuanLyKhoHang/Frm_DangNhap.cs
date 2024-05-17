@@ -1,4 +1,5 @@
-﻿using System;
+using QuanLyKhoHang.BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,5 +18,62 @@ namespace QuanLyKhoHang
         {
             InitializeComponent();
         }
+
+        BLL_HeThong db;
+        string err = string.Empty;
+        DataTable dtNhanVien;
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Frm_DangNhap_Load(object sender, EventArgs e)
+        {
+            bd = new Bll_HeThong(ClsMain.path);
+        }
+
+        private void btn_DangNhap_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txt_Username.Text))
+            {
+                if (!string.IsNullOrEmpty(txt_Password.Text))
+                {
+                    if (KiemTraDangNhap(txt_Username.Text, txt_Password.Text))
+                    {
+                        ClsMain.tenNhanVien = dtNhanVien.Rows[0]["TenNhanVien"].ToString();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thong tin tai khoan khong dung");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Chua nhap Mat khau");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Chua nhap tai khoan");
+            }
+
+        }
+
+        private bool KiemTraDangNhap(string taiKhoan, string matKhau)
+        {
+            dtNhanVien = new DataTable();
+            dtNhanVien = db.KiemTraDangNhap(ref err, taiKhoan, matKhau);
+            if (dtNhanVien.Rows.Count > 0)
+            {
+                if (dtNhanVien.Rows[0]["Code"].ToString().Equals("1"))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 }
