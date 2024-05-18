@@ -14,14 +14,6 @@ CREATE TABLE NhaCungCap (
   Email VARCHAR(50)
 );
 
-CREATE TABLE KhachHang (
-  MaKhachHang INT PRIMARY KEY IDENTITY,
-  TenKhachHang VARCHAR(255) NOT NULL,
-  DiaChi VARCHAR(255) NOT NULL,
-  DienThoai VARCHAR(20) NOT NULL,
-  Email VARCHAR(50)
-);
-
 CREATE TABLE NhanVien (
   MaNhanVien INT PRIMARY KEY IDENTITY,
   TenNhanVien VARCHAR(255) NOT NULL,
@@ -39,37 +31,37 @@ CREATE TABLE HangHoa (
 );
 
 CREATE TABLE PhieuNhap (
-  MaPhieuNhap INT PRIMARY KEY IDENTITY,
+  MaPhieuNhap INT primary key IDENTITY,
   NgayNhap DATE NOT NULL,
-  MaNhaCungCap INT NOT NULL,
   MaNhanVien INT NOT NULL,
-  FOREIGN KEY (MaNhaCungCap) REFERENCES NhaCungCap(MaNhaCungCap),
-  FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
+  FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien),
 );
 
 CREATE TABLE ChitietPhieuNhap (
-  MaCTPN INT PRIMARY KEY IDENTITY, -- mã chi tiết phiếu nhập
+  MaCTPN INT IDENTITY, -- mã chi tiết phiếu nhập
   MaPhieuNhap INT NOT NULL,
   MaHang INT NOT NULL,
   SoLuongNhap INT NOT NULL,
+  SoLuongNhapTon INT NOT NULL
+  constraint CTPNhap primary key (MaCTPN,MaHang),
   FOREIGN KEY (MaPhieuNhap) REFERENCES PhieuNhap(MaPhieuNhap),
   FOREIGN KEY (MaHang) REFERENCES HangHoa(MaHang)
 );
 
 CREATE TABLE PhieuXuat (
-  MaPhieuXuat INT PRIMARY KEY IDENTITY,
+  MaPhieuXuat INT primary key IDENTITY,
   NgayXuat DATE NOT NULL,
-  MaKhachHang INT NOT NULL,
   MaNhanVien INT NOT NULL,
-  FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang),
   FOREIGN KEY (MaNhanVien) REFERENCES NhanVien(MaNhanVien)
 );
 
 CREATE TABLE ChitietPhieuXuat (
-  MaCTPX INT PRIMARY KEY IDENTITY,  -- mã chi tiết phiếu xuất
+  MaCTPX INT IDENTITY,  -- mã chi tiết phiếu xuất
   MaPhieuXuat INT NOT NULL,
   MaHang INT NOT NULL,
   SoLuongXuat INT NOT NULL,
+  SoLuongCon INT NOT NULL
+  constraint CTPXuat primary key (MaCTPX,MaHang),
   FOREIGN KEY (MaPhieuXuat) REFERENCES PhieuXuat(MaPhieuXuat),
   FOREIGN KEY (MaHang) REFERENCES HangHoa(MaHang)
 );
@@ -85,11 +77,6 @@ insert into NhaCungCap(TenNhaCungCap,DiaChi,DienThoai,Email) values
 	(N'Nha A',N'Duong Nguyen Van A','0998877665','a@gmail.com'),
 	(N'Nha B',N'Duong Nguyen Van B','0998877663','b@gmail.com'),
 	(N'Nha C',N'Duong Nguyen Van C','0998877662','c@gmail.com')
-
-insert into KhachHang(TenKhachHang,DiaChi,DienThoai,Email) values
-	(N'Khach A',N'Duong Nguyen Van A','0998877625','ka@gmail.com'),
-	(N'Khach B',N'Duong Nguyen Van B','0998876343','kb@gmail.com'),
-	(N'Khach C',N'Duong Nguyen Van C','0998877643','kc@gmail.com')
 
 insert into HangHoa(TenHang,LoaiHang,SoLuongTon,MaNhaCungCap) values
 	(N'But chi',N'hop','3',1),
@@ -184,4 +171,138 @@ Create proc NhaCungCap_Delete
 as
 	Delete NhaCungCap
 	where MaNhaCungCap=@MaNhaCungCap
+Go
+
+-- Phương thức Insert mã phiếu nhập vào bảng phiếu nhập
+Create proc PhieuNhap_Insert
+@MaPhieuNhap int,
+@MaNhanVien int
+as
+insert into PhieuNhap(NgayNhap, MaNhanVien)
+values(GETDATE(), @MaNhanVien)
+Go
+
+-- thêm chi tiết phiếu nhập
+Create proc ChiTietPhieuNhap_InsertAndUpdate
+@MaPhieuNhap int, 
+@MaHang int, 
+@SoLuongNhap int
+as
+if Exists (select 1 from chitietPhieuNhap where maphieuNhap=@MaPhieuNhap and MaHang=@MaHang)
+begin 
+	update chitietphieunhap
+	set soluongNhap+=@SoLuongNhap,
+		SoLuongNhapTon=soluongNhap
+    where maphieuNhap=@MaPhieuNhap and MaHang=@MaHang
+end
+else
+begin 
+	insert into ChiTietPhieuNhap(MaPhieuNhap, MaHang,SoLuongNhap,SoLuongNhapTon)
+	values(@MaPhieuNhap, @MaHang, @SoLuongNhap, @SoLuongNhap)
+end
+go
+
+-- hiện thị chi tiết phiếu nhập
+Create proc ChiTietPhieuNhap_Select
+@MaPhieuNhap int
+as
+SELECT 0 as STT, a.MaHang, TenHang, SoLuongNhap
+FROM ChitietPhieuNhap a join PhieuNhap b on a.MaPhieuNhap=b.MaPhieuNhap
+JOIN HangHoa c on a.MaHang=c.MaHang
+where a.MaPhieuNhap=@MaPhieuNhap
+go
+
+-- hiện thị phiếu nhập
+Create proc PhieuNhap_Select
+@MaPhieuNhap int
+as
+select 0 as MaPhieuNhap, NgayNhap, MaNhanVien
+from PhieuNhap
+go
+
+-- Phương thức Insert mã phiếu xuất vào bảng phiếu xuất
+Create proc PhieuXuat_Insert
+@MaPhieuXuat int,
+@MaNhanVien int
+as
+insert into PhieuXuat(NgayXuat, MaNhanVien)
+values(GETDATE(), @MaNhanVien)
+Go
+
+-- thêm chi tiết phiếu xuất
+Create proc ChiTietPhieuXuat_InsertAndUpdate
+@MaPhieuXuat int, 
+@MaHang int, 
+@SoLuongXuat int
+as
+if Exists (select 1 from ChitietPhieuXuat where MaPhieuXuat=@MaPhieuXuat and MaHang=@MaHang)
+begin 
+	update ChitietPhieuXuat
+	set soLuongXuat+=@SoLuongXuat,
+		SoLuongCon=soluongXuat
+    where MaPhieuXuat=@MaPhieuXuat and MaHang=@MaHang
+end
+else
+begin 
+	insert into ChitietPhieuXuat(MaPhieuXuat, MaHang,soLuongXuat,SoLuongCon)
+	values(@MaPhieuXuat, @MaHang, @SoLuongXuat, @SoLuongXuat)
+end
+go
+
+-- hiện thị chi tiết phiếu xuất
+Create proc ChiTietPhieuXuat_Select
+@MaPhieuXuat int
+as
+SELECT 0 as STT, a.MaHang, TenHang, SoLuongXuat
+FROM ChitietPhieuXuat a join PhieuNhap b on a.MaPhieuXuat=b.MaPhieuNhap
+JOIN HangHoa c on a.MaHang=c.MaHang
+where a.MaPhieuXuat=@MaPhieuXuat
+go
+
+-- hiện thị phiếu xuất
+Create proc PhieuXuat_Select
+@MaPhieuXuat int
+as
+select 0 as MaPhieuXuat, NgayXuat, MaNhanVien
+from PhieuXuat
+go
+
+-- trigger cập nhật hiện thị số lượng tồn trong chi tiết phiếu nhập
+CREATE TRIGGER UpdateSoLuongTon_Insert
+ON ChiTietPhieuNhap
+AFTER INSERT
+AS
+BEGIN
+    UPDATE HangHoa
+    SET SoLuongTon = SoLuongTon + i.SoLuongNhap
+    FROM HangHoa hh
+    INNER JOIN inserted i ON hh.MaHang = i.MaHang;
+END;
+Go
+
+-- trigger cập nhật hiện thị số lượng tồn trong chi tiết phiếu nhập sau cập nhật
+CREATE TRIGGER UpdateSoLuongTon_Update
+ON ChiTietPhieuNhap
+AFTER UPDATE
+AS
+BEGIN
+    UPDATE [dbo].[HangHoa]
+    SET SoLuongTon = hh.SoLuongTon + (i.SoLuongNhap - d.SoLuongNhap)
+    FROM HangHoa hh
+    INNER JOIN inserted i ON hh.MaHang = i.MaHang
+    INNER JOIN deleted d ON i.MaHang=d.MaHang and i.MaPhieuNhap=d.MaPhieuNhap;
+END;
+GO
+
+-- trigger cập nhật hiện thị số lượng tồn trong chi tiết phiếu nhập sau khi xoá
+CREATE TRIGGER UpdateSoLuongTon_Delete
+ON ChiTietPhieuNhap
+AFTER DELETE
+AS
+BEGIN
+    UPDATE HangHoa
+    SET SoLuongTon = SoLuongTon - d.SoLuongNhap
+    FROM HangHoa hh
+    INNER JOIN deleted d ON hh.MaHang = d.MaHang;
+END;
 Go
