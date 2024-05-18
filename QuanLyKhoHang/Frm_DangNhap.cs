@@ -1,3 +1,4 @@
+using ProThucHienFormDangNhap;
 using QuanLyKhoHang.BusinessLayer;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace QuanLyKhoHang
 
         private void Frm_DangNhap_Load(object sender, EventArgs e)
         {
-            db = new Bll_HeThong(ClsMain.path);
+            db = new BLL_HeThong(Cls_Main.path);
         }
 
         private void btn_DangNhap_Click(object sender, EventArgs e)
@@ -41,7 +42,7 @@ namespace QuanLyKhoHang
                 {
                     if (KiemTraDangNhap(txt_Username.Text, txt_Password.Text))
                     {
-                        ClsMain.tenNhanVien = dtNhanVien.Rows[0]["TenNhanVien"].ToString();
+                        Cls_Main.tenNhanVien = dtNhanVien.Rows[0]["TenNhanVien"].ToString();
                         this.Close();
                     }
                     else
