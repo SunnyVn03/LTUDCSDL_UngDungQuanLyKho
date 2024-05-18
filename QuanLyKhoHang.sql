@@ -116,7 +116,7 @@ begin
 End
 Go
 
--- hiện thị thông tin khách hàng
+-- hiện thị thông tin hàng hoá
 Create proc HangHoa_Select
 @MaHang int = 1
 as
@@ -124,4 +124,64 @@ as
 	from [dbo].[HangHoa]
 	where @MaHang=Case @MaHang when 0 then @MaHang else @MaHang 
 end
+Go
+
+-- hiện thị thông tin nhà cung cấp
+Create proc NhaCungCap_Select
+@MaNhaCungCap int = 1
+as
+	Select MaNhaCungCap,TenNhaCungCap,DiaChi,DienThoai,Email
+	from [dbo].[NhaCungCap]
+	where @MaNhaCungCap=Case @MaNhaCungCap when 0 then @MaNhaCungCap else @MaNhaCungCap 
+end
+Go
+
+-- thêm hàng hoá
+Create proc HangHoa_InsertAndUpdate
+@MaHang int, @TenHang nvarchar(255), @LoaiHang nvarchar(50), @SoLuongTon int, @MaNhaCungCap int
+as
+if exists (select 1 from HangHoa where MaHang=@MaHang)
+begin
+	update HangHoa
+	set TenHang=@TenHang, LoaiHang=@LoaiHang,SoLuongTon=@SoLuongTon,MaNhaCungCap=@MaNhaCungCap
+	where MaHang=@MaHang
+end
+else
+begin
+	insert into HangHoa(TenHang,LoaiHang,SoLuongTon,MaNhaCungCap)
+	values( @TenHang, @LoaiHang, @SoLuongTon, @MaNhaCungCap)
+end
+go
+
+-- thêm nhà cung cấp
+Create proc NhaCungCap_InsertAndUpdate
+@MaNhaCungCap int, @TenNhaCungCap nvarchar(255), @DiaChi nvarchar(255), @DienThoai nvarchar(20), @Email nvarchar(50)
+as
+if exists (select 1 from NhaCungCap where MaNhaCungCap=@MaNhaCungCap)
+begin
+	update NhaCungCap
+	set TenNhaCungCap=@TenNhaCungCap, DiaChi=@DiaChi,DienThoai=@DienThoai,Email=@Email
+	where MaNhaCungCap=@MaNhaCungCap
+end
+else
+begin
+	insert into NhaCungCap(TenNhaCungCap,DiaChi,DienThoai,Email)
+	values( @TenNhaCungCap, @DiaChi, @DienThoai, @Email)
+end
+go
+
+-- xoá hàng hoá
+Create proc HangHoa_Delete
+@MaHang int
+as
+	Delete HangHoa
+	where MaHang=@MaHang
+Go
+
+-- xoá nhà cung cấp
+Create proc NhaCungCap_Delete
+@MaNhaCungCap int
+as
+	Delete NhaCungCap
+	where MaNhaCungCap=@MaNhaCungCap
 Go

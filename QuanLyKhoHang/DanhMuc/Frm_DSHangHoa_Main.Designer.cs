@@ -30,19 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_DSHangHoa_Main));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnThem = new System.Windows.Forms.ToolStripButton();
+            this.btnSua = new System.Windows.Forms.ToolStripButton();
+            this.btnXoa = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.txtTimKiem = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.cboThuocTinh = new System.Windows.Forms.ToolStripComboBox();
             this.btnthoat = new System.Windows.Forms.ToolStripButton();
             this.dsHangHoa = new System.Windows.Forms.DataGridView();
             this.colMaHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTenHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLoaiHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSoLuongTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblErr = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
@@ -54,52 +55,55 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton3,
-            this.toolStripButton2,
-            this.toolStripButton1,
+            this.btnThem,
+            this.btnSua,
+            this.btnXoa,
             this.toolStripButton4,
-            this.toolStripTextBox1,
+            this.txtTimKiem,
             this.toolStripLabel1,
-            this.toolStripComboBox1,
+            this.cboThuocTinh,
             this.btnthoat});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1573, 36);
+            this.toolStrip1.Size = new System.Drawing.Size(1180, 36);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton3
+            // btnThem
             // 
-            this.toolStripButton3.AutoSize = false;
-            this.toolStripButton3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Margin = new System.Windows.Forms.Padding(0, 1, 0, 10);
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(100, 25);
-            this.toolStripButton3.Text = "Thêm";
+            this.btnThem.AutoSize = false;
+            this.btnThem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
+            this.btnThem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnThem.Margin = new System.Windows.Forms.Padding(0, 1, 0, 10);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(100, 25);
+            this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // toolStripButton2
+            // btnSua
             // 
-            this.toolStripButton2.AutoSize = false;
-            this.toolStripButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Margin = new System.Windows.Forms.Padding(0, 1, 0, 10);
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(100, 25);
-            this.toolStripButton2.Text = "Sửa";
+            this.btnSua.AutoSize = false;
+            this.btnSua.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
+            this.btnSua.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSua.Margin = new System.Windows.Forms.Padding(0, 1, 0, 10);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(100, 25);
+            this.btnSua.Text = "Sửa";
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
-            // toolStripButton1
+            // btnXoa
             // 
-            this.toolStripButton1.AutoSize = false;
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 1, 0, 10);
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(100, 25);
-            this.toolStripButton1.Text = "Xóa";
+            this.btnXoa.AutoSize = false;
+            this.btnXoa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
+            this.btnXoa.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(0, 1, 0, 10);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(100, 25);
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // toolStripButton4
             // 
@@ -111,13 +115,14 @@
             this.toolStripButton4.Size = new System.Drawing.Size(99, 33);
             this.toolStripButton4.Text = "Tìm kiếm:";
             // 
-            // toolStripTextBox1
+            // txtTimKiem
             // 
-            this.toolStripTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(266, 36);
+            this.txtTimKiem.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTimKiem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTimKiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(200, 36);
+            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
             // toolStripLabel1
             // 
@@ -126,12 +131,12 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(92, 33);
             this.toolStripLabel1.Text = "Phân loại";
             // 
-            // toolStripComboBox1
+            // cboThuocTinh
             // 
-            this.toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            this.toolStripComboBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(199, 36);
+            this.cboThuocTinh.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.cboThuocTinh.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboThuocTinh.Name = "cboThuocTinh";
+            this.cboThuocTinh.Size = new System.Drawing.Size(150, 36);
             // 
             // btnthoat
             // 
@@ -152,12 +157,12 @@
             this.colMaHang,
             this.colTenHang,
             this.colLoaiHang,
-            this.colSoLuongTon});
-            this.dsHangHoa.Location = new System.Drawing.Point(0, 46);
-            this.dsHangHoa.Margin = new System.Windows.Forms.Padding(4);
+            this.colSoLuongTon,
+            this.colMaNhaCungCap});
+            this.dsHangHoa.Location = new System.Drawing.Point(0, 37);
             this.dsHangHoa.Name = "dsHangHoa";
             this.dsHangHoa.RowHeadersWidth = 51;
-            this.dsHangHoa.Size = new System.Drawing.Size(1573, 849);
+            this.dsHangHoa.Size = new System.Drawing.Size(1180, 690);
             this.dsHangHoa.TabIndex = 1;
             // 
             // colMaHang
@@ -192,33 +197,42 @@
             this.colSoLuongTon.Name = "colSoLuongTon";
             this.colSoLuongTon.Width = 125;
             // 
+            // colMaNhaCungCap
+            // 
+            this.colMaNhaCungCap.DataPropertyName = "MaNhaCungCap";
+            this.colMaNhaCungCap.HeaderText = "Mã nhà cung cấp";
+            this.colMaNhaCungCap.MinimumWidth = 6;
+            this.colMaNhaCungCap.Name = "colMaNhaCungCap";
+            this.colMaNhaCungCap.Width = 125;
+            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblErr});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 838);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 678);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1573, 24);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1180, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // lblErr
             // 
             this.lblErr.Name = "lblErr";
-            this.lblErr.Size = new System.Drawing.Size(0, 18);
+            this.lblErr.Size = new System.Drawing.Size(0, 16);
             // 
             // Frm_DSHangHoa_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1573, 862);
+            this.ClientSize = new System.Drawing.Size(1180, 700);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dsHangHoa);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_DSHangHoa_Main";
             this.Text = "Frm_DSHangHoa_Main";
             this.Load += new System.EventHandler(this.Frm_DSHangHoa_Main_Load);
@@ -235,20 +249,21 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripButton btnThem;
+        private System.Windows.Forms.ToolStripButton btnSua;
+        private System.Windows.Forms.ToolStripButton btnXoa;
+        private System.Windows.Forms.ToolStripTextBox txtTimKiem;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripComboBox cboThuocTinh;
         private System.Windows.Forms.ToolStripButton btnthoat;
         private System.Windows.Forms.DataGridView dsHangHoa;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblErr;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTenHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLoaiHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSoLuongTon;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel lblErr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaNhaCungCap;
     }
 }
