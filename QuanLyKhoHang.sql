@@ -80,6 +80,23 @@ Insert into NhanVien(TenNhanVien,TaiKhoan,MatKhau) values
 	(N'Nguyen Van A','admin',PWDENCRYPT('123456')),
 	(N'Nguyen Van A','user',PWDENCRYPT('123456')),
 	(N'Nguyen Van A','user1',PWDENCRYPT('123456'))
+
+insert into NhaCungCap(TenNhaCungCap,DiaChi,DienThoai,Email) values
+	(N'Nha A',N'Duong Nguyen Van A','0998877665','a@gmail.com'),
+	(N'Nha B',N'Duong Nguyen Van B','0998877663','b@gmail.com'),
+	(N'Nha C',N'Duong Nguyen Van C','0998877662','c@gmail.com')
+
+insert into KhachHang(TenKhachHang,DiaChi,DienThoai,Email) values
+	(N'Khach A',N'Duong Nguyen Van A','0998877625','ka@gmail.com'),
+	(N'Khach B',N'Duong Nguyen Van B','0998876343','kb@gmail.com'),
+	(N'Khach C',N'Duong Nguyen Van C','0998877643','kc@gmail.com')
+
+insert into HangHoa(TenHang,LoaiHang,SoLuongTon,MaNhaCungCap) values
+	(N'But chi',N'hop','3',1),
+	(N'Banh',N'cai','30',1),
+	(N'Sach',N'bo','33',2),
+	(N'But bi',N'hop','23',3),
+	(N'Choi',N'chiec','7',2)
 go
 
 -- kiểm tra đăng nhập
@@ -97,4 +114,14 @@ else
 begin 
 	select 0 as Code,'' as MaNhanVien,N'' as TenNhanVien
 End
+Go
+
+-- hiện thị thông tin khách hàng
+Create proc HangHoa_Select
+@MaHang int = 1
+as
+	Select MaHang,TenHang,LoaiHang,SoLuongTon,MaNhaCungCap
+	from [dbo].[HangHoa]
+	where @MaHang=Case @MaHang when 0 then @MaHang else @MaHang 
+end
 Go

@@ -30,26 +30,29 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_DSHangHoa_Main));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.colSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaMatHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTenMatHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLoaiMatHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDonViTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnthoat = new System.Windows.Forms.ToolStripButton();
+            this.dsHangHoa = new System.Windows.Forms.DataGridView();
+            this.colMaHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTenHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLoaiHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSoLuongTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblErr = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsHangHoa)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton3,
             this.toolStripButton2,
@@ -58,34 +61,12 @@
             this.toolStripTextBox1,
             this.toolStripLabel1,
             this.toolStripComboBox1,
-            this.toolStripButton5});
+            this.btnthoat});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1180, 36);
+            this.toolStrip1.Size = new System.Drawing.Size(1573, 36);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.AutoSize = false;
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 1, 0, 10);
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(100, 25);
-            this.toolStripButton1.Text = "Xóa";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.AutoSize = false;
-            this.toolStripButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Margin = new System.Windows.Forms.Padding(0, 1, 0, 10);
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(100, 25);
-            this.toolStripButton2.Text = "Sửa";
             // 
             // toolStripButton3
             // 
@@ -98,13 +79,27 @@
             this.toolStripButton3.Size = new System.Drawing.Size(100, 25);
             this.toolStripButton3.Text = "Thêm";
             // 
-            // toolStripTextBox1
+            // toolStripButton2
             // 
-            this.toolStripTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(200, 36);
+            this.toolStripButton2.AutoSize = false;
+            this.toolStripButton2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Margin = new System.Windows.Forms.Padding(0, 1, 0, 10);
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(100, 25);
+            this.toolStripButton2.Text = "Sửa";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.AutoSize = false;
+            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 1, 0, 10);
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(100, 25);
+            this.toolStripButton1.Text = "Xóa";
             // 
             // toolStripButton4
             // 
@@ -113,14 +108,22 @@
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(81, 33);
+            this.toolStripButton4.Size = new System.Drawing.Size(99, 33);
             this.toolStripButton4.Text = "Tìm kiếm:";
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(266, 36);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(74, 33);
+            this.toolStripLabel1.Size = new System.Drawing.Size(92, 33);
             this.toolStripLabel1.Text = "Phân loại";
             // 
             // toolStripComboBox1
@@ -128,82 +131,102 @@
             this.toolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
             this.toolStripComboBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(150, 36);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(199, 36);
             // 
-            // toolStripButton5
+            // btnthoat
             // 
-            this.toolStripButton5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(69, 33);
-            this.toolStripButton5.Text = "Thoát";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            this.btnthoat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnthoat.Image = ((System.Drawing.Image)(resources.GetObject("btnthoat.Image")));
+            this.btnthoat.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnthoat.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
+            this.btnthoat.Name = "btnthoat";
+            this.btnthoat.Size = new System.Drawing.Size(86, 33);
+            this.btnthoat.Text = "Thoát";
+            this.btnthoat.Click += new System.EventHandler(this.btnthoat_Click);
             // 
-            // dataGridView1
+            // dsHangHoa
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colSTT,
-            this.colMaMatHang,
-            this.colTenMatHang,
-            this.colLoaiMatHang,
-            this.colDonViTinh});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 37);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1180, 690);
-            this.dataGridView1.TabIndex = 1;
+            this.dsHangHoa.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dsHangHoa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dsHangHoa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colMaHang,
+            this.colTenHang,
+            this.colLoaiHang,
+            this.colSoLuongTon});
+            this.dsHangHoa.Location = new System.Drawing.Point(0, 46);
+            this.dsHangHoa.Margin = new System.Windows.Forms.Padding(4);
+            this.dsHangHoa.Name = "dsHangHoa";
+            this.dsHangHoa.RowHeadersWidth = 51;
+            this.dsHangHoa.Size = new System.Drawing.Size(1573, 849);
+            this.dsHangHoa.TabIndex = 1;
             // 
-            // colSTT
+            // colMaHang
             // 
-            this.colSTT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colSTT.DataPropertyName = "STT";
-            this.colSTT.HeaderText = "STT";
-            this.colSTT.Name = "colSTT";
-            this.colSTT.Width = 53;
+            this.colMaHang.DataPropertyName = "MaHang";
+            this.colMaHang.HeaderText = "Mã mặt hàng";
+            this.colMaHang.MinimumWidth = 6;
+            this.colMaHang.Name = "colMaHang";
+            this.colMaHang.Width = 125;
             // 
-            // colMaMatHang
+            // colTenHang
             // 
-            this.colMaMatHang.DataPropertyName = "MaMatHang";
-            this.colMaMatHang.HeaderText = "Mã mặt hàng";
-            this.colMaMatHang.Name = "colMaMatHang";
+            this.colTenHang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colTenHang.DataPropertyName = "TenHang";
+            this.colTenHang.HeaderText = "Tên mặt hàng";
+            this.colTenHang.MinimumWidth = 6;
+            this.colTenHang.Name = "colTenHang";
             // 
-            // colTenMatHang
+            // colLoaiHang
             // 
-            this.colTenMatHang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colTenMatHang.DataPropertyName = "TenMatHang";
-            this.colTenMatHang.HeaderText = "Tên mặt hàng";
-            this.colTenMatHang.Name = "colTenMatHang";
+            this.colLoaiHang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colLoaiHang.DataPropertyName = "LoaiHang";
+            this.colLoaiHang.HeaderText = "Loại mặt hàng";
+            this.colLoaiHang.MinimumWidth = 6;
+            this.colLoaiHang.Name = "colLoaiHang";
             // 
-            // colLoaiMatHang
+            // colSoLuongTon
             // 
-            this.colLoaiMatHang.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colLoaiMatHang.DataPropertyName = "LoaiMatHang";
-            this.colLoaiMatHang.HeaderText = "Loại mặt hàng";
-            this.colLoaiMatHang.Name = "colLoaiMatHang";
+            this.colSoLuongTon.DataPropertyName = "SoLuongTon";
+            this.colSoLuongTon.HeaderText = "Số lượng tồn";
+            this.colSoLuongTon.MinimumWidth = 6;
+            this.colSoLuongTon.Name = "colSoLuongTon";
+            this.colSoLuongTon.Width = 125;
             // 
-            // colDonViTinh
+            // statusStrip1
             // 
-            this.colDonViTinh.DataPropertyName = "DonViTinh";
-            this.colDonViTinh.HeaderText = "Đơn vị tính";
-            this.colDonViTinh.Name = "colDonViTinh";
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblErr});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 838);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1573, 24);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblErr
+            // 
+            this.lblErr.Name = "lblErr";
+            this.lblErr.Size = new System.Drawing.Size(0, 18);
             // 
             // Frm_DSHangHoa_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1180, 700);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(1573, 862);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.dsHangHoa);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Frm_DSHangHoa_Main";
             this.Text = "Frm_DSHangHoa_Main";
+            this.Load += new System.EventHandler(this.Frm_DSHangHoa_Main_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsHangHoa)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,12 +242,13 @@
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSTT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMaMatHang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTenMatHang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLoaiMatHang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDonViTinh;
+        private System.Windows.Forms.ToolStripButton btnthoat;
+        private System.Windows.Forms.DataGridView dsHangHoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaHang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTenHang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLoaiHang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSoLuongTon;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblErr;
     }
 }
