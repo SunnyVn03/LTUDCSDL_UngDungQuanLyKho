@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using QuanLyKhoHang.DanhMuc;
+using QuanLyKhoHang.TacVu;
 
 namespace QuanLyKhoHang
 {
@@ -22,6 +23,10 @@ namespace QuanLyKhoHang
         private void Frm_Main_Load(object sender, EventArgs e)
         {
             MoFormDangNhap();
+            if (Cls_Main.tenNhanVien == "")
+            {
+                Application.Exit();
+            }
         }
 
         private void MoFormDangNhap()
@@ -88,7 +93,14 @@ namespace QuanLyKhoHang
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cls_Main.tenNhanVien = "";
+            this.Hide();
             MoFormDangNhap();
+            if (Cls_Main.tenNhanVien == "")
+            {
+                Application.Exit();
+            }
+            this.Show();
         }
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
@@ -99,6 +111,27 @@ namespace QuanLyKhoHang
         private void danhSáchHàngHóaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenForm(true, "Danh sách hàng hóa", new Frm_DSHangHoa_Main());
+        }
+
+        private void danhSáchNhàSảnXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenForm(true, "Danh sách nhà cung cấp", new Frm_DSNhaCungCap_Main());
+        }
+
+        private void tabControl1_TabItemClose(object sender, TabStripActionEventArgs e)
+        {
+            TabItem t = tabControl1.SelectedTab;
+            tabControl1.Tabs.Remove(t);
+        }
+
+        private void quảnLýNhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenForm(true, "Nhập kho", new Frm_NhapKho_Main());
+        }
+
+        private void quảnLýXuấtHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenForm(true, "Xuất kho", new Frm_XuatKho_Main());
         }
     }
 }

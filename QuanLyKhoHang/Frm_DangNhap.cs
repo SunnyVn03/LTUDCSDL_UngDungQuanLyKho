@@ -30,7 +30,9 @@ namespace QuanLyKhoHang
 
         private void Frm_DangNhap_Load(object sender, EventArgs e)
         {
-            db = new Bll_HeThong(ClsMain.path);
+            db = new BLL_HeThong(Cls_Main.path);
+            txt_Username.Text = "admin";
+            txt_Password.Text = "123456";
         }
 
         private void btn_DangNhap_Click(object sender, EventArgs e)
@@ -41,7 +43,6 @@ namespace QuanLyKhoHang
                 {
                     if (KiemTraDangNhap(txt_Username.Text, txt_Password.Text))
                     {
-                        ClsMain.tenNhanVien = dtNhanVien.Rows[0]["TenNhanVien"].ToString();
                         this.Close();
                     }
                     else
@@ -69,11 +70,13 @@ namespace QuanLyKhoHang
             {
                 if (dtNhanVien.Rows[0]["Code"].ToString().Equals("1"))
                 {
+                    Cls_Main.tenNhanVien = dtNhanVien.Rows[0]["TenNhanVien"].ToString();
+
+                    Cls_Main.maNhanVien = dtNhanVien.Rows[0]["MaNhanVien"].ToString();
                     return true;
                 }
             }
             return false;
         }
-
     }
 }
