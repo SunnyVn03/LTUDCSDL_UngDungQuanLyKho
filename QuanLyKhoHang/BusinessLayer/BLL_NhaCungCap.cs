@@ -38,13 +38,6 @@ namespace QuanLyKhoHang.BusinessLayer
             };
             return db.MyExcuteNonQuery(ref err, "NhaCungCap_InsertAndUpdate", CommandType.StoredProcedure, sqlParameters);
         }
-
-        public object SinhMaLonNhat(ref string err)
-        {
-            return db.MyExcuteScalar(ref err, "NhaCungCap_LayMaNhaCungCap", CommandType.StoredProcedure, null);
-        }
-
-        internal int XoaNhaCungCapTheoID(ref string err, string maNhaCungCap)
         {
             try
             {

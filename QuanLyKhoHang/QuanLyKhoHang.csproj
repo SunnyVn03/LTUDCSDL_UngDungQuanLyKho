@@ -83,6 +83,7 @@
       <DependentUpon>Frm_DSHangHoa_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="DanhMuc\Frm_DSNhaCungCap_Main.cs">
+
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DanhMuc\Frm_DSNhaCungCap_Main.Designer.cs">
@@ -91,8 +92,20 @@
     <Compile Include="DanhMuc\Frm_DSNhaSX_Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DanhMuc\Frm_DSNhaSX_Main.Designer.cs">
-      <DependentUpon>Frm_DSNhaSX_Main.cs</DependentUpon>
+    <Compile Include="DanhMuc\Frm_DSNhaCungCap_Main.Designer.cs">
+      <DependentUpon>Frm_DSNhaCungCap_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_QuanLyHangHoa_Modifies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_QuanLyHangHoa_Modifies.Designer.cs">
+      <DependentUpon>Frm_QuanLyHangHoa_Modifies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_QuanLyNhaCungCap_Modifies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_QuanLyNhaCungCap_Modifies.Designer.cs">
+      <DependentUpon>Frm_QuanLyNhaCungCap_Modifies.cs</DependentUpon>
     </Compile>
     <Compile Include="DanhMuc\Frm_QuanLyHangHoa_Modifies.cs">
       <SubType>Form</SubType>

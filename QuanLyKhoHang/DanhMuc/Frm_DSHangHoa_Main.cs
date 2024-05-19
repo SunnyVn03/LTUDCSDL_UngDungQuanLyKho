@@ -1,4 +1,4 @@
-﻿using QuanLyHangHoa.BusinessLayer;
+using QuanLyHangHoa.BusinessLayer;
 using QuanLyKhoHang.DTO;
 using System;
 using System.Collections.Generic;

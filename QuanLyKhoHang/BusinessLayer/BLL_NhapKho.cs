@@ -23,6 +23,7 @@ namespace QuanLyKhoHang.BusinessLayer
             {
                 new SqlParameter("@MaPhieuNhap",int.Parse(maPhieuNhap)),
                 new SqlParameter("@MaNhanVien",int.Parse(maNhanVien))
+
             };
             return db.MyExcuteNonQuery(ref err, "PhieuNhap_Insert", CommandType.StoredProcedure, sqlParameters);
         }
@@ -34,6 +35,7 @@ namespace QuanLyKhoHang.BusinessLayer
                 new SqlParameter("@MaPhieuNhap",int.Parse(maPhieuNhap)),
                 new SqlParameter("@MaHang",int.Parse(maHang)),
                 new SqlParameter("@SoLuongNhap",int.Parse(soLuongNhap))
+
             };
             return db.MyExcuteNonQuery(ref err, "ChiTietPhieuNhap_InsertAndUpdate", CommandType.StoredProcedure, sqlParameters);
         }
@@ -74,5 +76,4 @@ namespace QuanLyKhoHang.BusinessLayer
             return db.GetDataTable(ref err, "PhieuNhap_LayMaxID", CommandType.StoredProcedure, null);
         }
     }
-
 }

@@ -11,8 +11,8 @@ namespace QuanLyKhoHang
 {
     public class Cls_Main
     {
-        public static string path = @"Data Source = MINHNHATPC\MSSQLSERVER01;database = QuanLyKhoHang; Integrated Security = True; Connect Timeout = 30; Encrypt = False;";//string.Format(@"{0}/Connection.ini", Application.StartupPath);
-
+        //public static string path = string.Format(@"{0}/Connection.ini", Application.StartupPath);
+        public static string path = "Data Source=tsukoyumi;Database=QuanLyKhoHang;Integrated Security=True;Connect Timeout=30;Encrypt=False";
         public static string tenNhanVien = string.Empty;
         public static string maNhanVien = string.Empty;
 

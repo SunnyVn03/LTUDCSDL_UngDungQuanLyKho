@@ -1,4 +1,4 @@
-﻿using QuanLyKhoHang.BusinessLayer;
+using QuanLyKhoHang.BusinessLayer;
 using QuanLyKhoHang.DTO;
 using System;
 using System.Collections.Generic;
@@ -81,7 +81,7 @@ namespace QuanLyKhoHang.DanhMuc
         {
             if (dgv_NhaCungCap.SelectedRows.Count != 0)
             {
-                if (bd.XoaNhaCungCapTheoID(ref err, dgv_NhaCungCap.SelectedRows[0].Cells["colMaNhaCungCap"].Value.ToString()) != 1)
+                if (bd.XoaNhaCungCapTheoID(ref err, int.Parse(dgv_NhaCungCap.SelectedRows[0].Cells["colMaNhaCungCap"].Value.ToString())) != 1)
                 {
                     MessageBox.Show(err);
                 }
