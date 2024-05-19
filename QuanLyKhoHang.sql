@@ -38,12 +38,11 @@ CREATE TABLE PhieuNhap (
 );
 
 CREATE TABLE ChitietPhieuNhap (
-  MaCTPN INT IDENTITY, -- mã chi tiết phiếu nhập
   MaPhieuNhap INT NOT NULL,
   MaHang INT NOT NULL,
   SoLuongNhap INT NOT NULL,
   SoLuongNhapTon INT NOT NULL
-  constraint CTPNhap primary key (MaCTPN,MaHang),
+  constraint CTPNhap primary key (MaPhieuNhap,MaHang),
   FOREIGN KEY (MaPhieuNhap) REFERENCES PhieuNhap(MaPhieuNhap),
   FOREIGN KEY (MaHang) REFERENCES HangHoa(MaHang)
 );
@@ -56,12 +55,11 @@ CREATE TABLE PhieuXuat (
 );
 
 CREATE TABLE ChitietPhieuXuat (
-  MaCTPX INT IDENTITY,  -- mã chi tiết phiếu xuất
   MaPhieuXuat INT NOT NULL,
   MaHang INT NOT NULL,
   SoLuongXuat INT NOT NULL,
   SoLuongCon INT NOT NULL
-  constraint CTPXuat primary key (MaCTPX,MaHang),
+  constraint CTPXuat primary key (MaPhieuXuat,MaHang),
   FOREIGN KEY (MaPhieuXuat) REFERENCES PhieuXuat(MaPhieuXuat),
   FOREIGN KEY (MaHang) REFERENCES HangHoa(MaHang)
 );
@@ -203,21 +201,23 @@ end
 go
 
 -- hiện thị chi tiết phiếu nhập
-Create proc ChiTietPhieuNhap_Select
+create proc ChiTietPhieuNhap_Select
 @MaPhieuNhap int
 as
-SELECT 0 as STT, a.MaHang, TenHang, SoLuongNhap
-FROM ChitietPhieuNhap a join PhieuNhap b on a.MaPhieuNhap=b.MaPhieuNhap
-JOIN HangHoa c on a.MaHang=c.MaHang
+SELECT ROW_NUMBER() over (order by (select 1)) as STT, a.MaHang, TenHang,TenNhaCungCap,SoLuongNhap
+FROM ChitietPhieuNhap a join HangHoa b on a.MaHang = b.MaHang join NhaCungCap c on b.MaNhaCungCap = c.MaNhaCungCap
 where a.MaPhieuNhap=@MaPhieuNhap
 go
 
 -- hiện thị phiếu nhập
-Create proc PhieuNhap_Select
-@MaPhieuNhap int
+create proc PhieuNhap_Select
+@TuNgay date, 
+@DenNgay date
 as
-select 0 as MaPhieuNhap, NgayNhap, MaNhanVien
-from PhieuNhap
+select ROW_NUMBER() over (order by (select 1)) as STT ,a.MaPhieuNhap, NgayNhap, a.MaNhanVien,TenNhanVien
+from PhieuNhap a  join NhanVien b on b.MaNhanVien=a.MaNhanVien
+where NgayNhap between @TuNgay and @DenNgay
+group by a.MaPhieuNhap, NgayNhap, a.MaNhanVien,TenNhanVien
 go
 
 -- Phương thức Insert mã phiếu xuất vào bảng phiếu xuất
@@ -250,21 +250,23 @@ end
 go
 
 -- hiện thị chi tiết phiếu xuất
-Create proc ChiTietPhieuXuat_Select
+create proc ChiTietPhieuXuat_Select
 @MaPhieuXuat int
 as
-SELECT 0 as STT, a.MaHang, TenHang, SoLuongXuat
-FROM ChitietPhieuXuat a join PhieuNhap b on a.MaPhieuXuat=b.MaPhieuNhap
-JOIN HangHoa c on a.MaHang=c.MaHang
+SELECT ROW_NUMBER() over (order by (select 1)) as STT, a.MaHang, TenHang,TenNhaCungCap,SoLuongXuat
+FROM ChitietPhieuXuat a join HangHoa b on a.MaHang = b.MaHang join NhaCungCap c on b.MaNhaCungCap = c.MaNhaCungCap
 where a.MaPhieuXuat=@MaPhieuXuat
 go
 
 -- hiện thị phiếu xuất
-Create proc PhieuXuat_Select
-@MaPhieuXuat int
+create proc PhieuXuat_Select
+@TuNgay date, 
+@DenNgay date
 as
-select 0 as MaPhieuXuat, NgayXuat, MaNhanVien
-from PhieuXuat
+select ROW_NUMBER() over (order by (select 1)) as STT ,a.MaPhieuXuat, NgayXuat, a.MaNhanVien,TenNhanVien
+from PhieuXuat a  join NhanVien b on b.MaNhanVien=a.MaNhanVien
+where NgayXuat between @TuNgay and @DenNgay
+group by a.MaPhieuXuat, NgayXuat, a.MaNhanVien,TenNhanVien
 go
 
 -- trigger cập nhật hiện thị số lượng tồn trong chi tiết phiếu nhập
@@ -302,6 +304,72 @@ AS
 BEGIN
     UPDATE HangHoa
     SET SoLuongTon = SoLuongTon - d.SoLuongNhap
+    FROM HangHoa hh
+    INNER JOIN deleted d ON hh.MaHang = d.MaHang;
+END;
+Go
+
+-- Proc lấy thông tin nhà cung cấp vào cboNhaCungCap - NhapKhoModifies
+Create PROC NhaCungCap_SelectToComboBox
+AS
+SELECT MaNhaCungCap, TenNhaCungCap
+FROM dbo.NhaCungCap
+Go
+
+-- Proc lấy thông tin HangHoa vào cboMatHang - NhapKhoModifies
+create PROC HangHoa_SelectToComboBox @MaNhaCungCap int
+AS
+SELECT MaHang, TenHang
+FROM dbo.HangHoa
+WHERE MaNhaCungCap = @MaNhaCungCap
+Go
+
+-- Proc lấy MaHang lớn nhất
+create PROC PhieuNhap_LayMaxID
+AS
+SELECT top 1 Max(MaPhieuNhap)+1 as MaPhieuNhap
+FROM dbo.PhieuNhap
+Go
+create PROC PhieuXuat_LayMaxID
+AS
+SELECT top 1 Max(MaPhieuXuat)+1 as MaPhieuXuat
+FROM dbo.PhieuXuat
+Go
+-- trigger cập nhật hiện thị số lượng tồn trong chi tiết phiếu xuất
+CREATE TRIGGER CTPX_UpdateSoLuongTon_Insert
+ON ChiTietPhieuXuat
+AFTER INSERT
+AS
+BEGIN
+    UPDATE HangHoa
+    SET SoLuongTon = SoLuongTon - i.SoLuongXuat
+    FROM HangHoa hh
+    INNER JOIN inserted i ON hh.MaHang = i.MaHang;
+END;
+Go
+
+-- trigger cập nhật hiện thị số lượng tồn trong chi tiết phiếu xuất sau cập nhật
+CREATE TRIGGER CTPX_UpdateSoLuongTon_Update
+ON ChiTietPhieuXuat
+AFTER UPDATE
+AS
+BEGIN
+    UPDATE [dbo].[HangHoa]
+    SET SoLuongTon = hh.SoLuongTon - (i.SoLuongXuat - d.SoLuongXuat)
+    FROM HangHoa hh
+    INNER JOIN inserted i ON hh.MaHang = i.MaHang
+    INNER JOIN deleted d ON i.MaHang=d.MaHang and i.MaPhieuXuat=d.MaPhieuXuat;
+END;
+GO
+
+-- trigger cập nhật hiện thị số lượng tồn trong chi tiết phiếu xuất sau khi xoá
+CREATE TRIGGER CTPX_UpdateSoLuongTon_Delete
+ON ChiTietPhieuXuat
+AFTER DELETE
+AS
+BEGIN
+    UPDATE HangHoa
+    SET SoLuongTon = SoLuongTon + d.SoLuongXuat
     FROM HangHoa hh
     INNER JOIN deleted d ON hh.MaHang = d.MaHang;
 END;
