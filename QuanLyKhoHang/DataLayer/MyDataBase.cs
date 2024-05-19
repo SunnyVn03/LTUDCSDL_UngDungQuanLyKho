@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Data;
+using System.Drawing;
+using System.Runtime.Remoting.Contexts;
 
 namespace QuanLyKhoHang.DataLayer
 {

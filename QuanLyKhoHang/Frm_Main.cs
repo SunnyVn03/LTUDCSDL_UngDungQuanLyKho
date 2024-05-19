@@ -23,6 +23,10 @@ namespace QuanLyKhoHang
         private void Frm_Main_Load(object sender, EventArgs e)
         {
             MoFormDangNhap();
+            if (Cls_Main.tenNhanVien == "")
+            {
+                Application.Exit();
+            }
         }
 
         private void MoFormDangNhap()
@@ -89,7 +93,14 @@ namespace QuanLyKhoHang
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Cls_Main.tenNhanVien = "";
+            this.Hide();
             MoFormDangNhap();
+            if (Cls_Main.tenNhanVien == "")
+            {
+                Application.Exit();
+            }
+            this.Show();
         }
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProThucHienFormDangNhap
+namespace QuanLyKhoHang
 {
     public class Cls_Main
     {

@@ -73,6 +73,8 @@
     <Compile Include="BusinessLayer\BLL_HangHoa.cs" />
     <Compile Include="BusinessLayer\BLL_HeThong.cs" />
     <Compile Include="BusinessLayer\BLL_NhaCungCap.cs" />
+    <Compile Include="BusinessLayer\BLL_NhapKho.cs" />
+    <Compile Include="BusinessLayer\BLL_XuatKho.cs" />
     <Compile Include="Cls_Main.cs" />
     <Compile Include="DanhMuc\Frm_DSHangHoa_Main.cs">
       <SubType>Form</SubType>
@@ -81,6 +83,13 @@
       <DependentUpon>Frm_DSHangHoa_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="DanhMuc\Frm_DSNhaCungCap_Main.cs">
+
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_DSNhaCungCap_Main.Designer.cs">
+      <DependentUpon>Frm_DSNhaCungCap_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_DSNhaSX_Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DanhMuc\Frm_DSNhaCungCap_Main.Designer.cs">
@@ -98,10 +107,23 @@
     <Compile Include="DanhMuc\Frm_QuanLyNhaCungCap_Modifies.Designer.cs">
       <DependentUpon>Frm_QuanLyNhaCungCap_Modifies.cs</DependentUpon>
     </Compile>
+    <Compile Include="DanhMuc\Frm_QuanLyHangHoa_Modifies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_QuanLyHangHoa_Modifies.Designer.cs">
+      <DependentUpon>Frm_QuanLyHangHoa_Modifies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_QuanLyNhaCungCap_Modifies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhMuc\Frm_QuanLyNhaCungCap_Modifies.Designer.cs">
+      <DependentUpon>Frm_QuanLyNhaCungCap_Modifies.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataLayer\ConectionStringManager.cs" />
     <Compile Include="DataLayer\MyDataBase.cs" />
-    <Compile Include="DTO\NhaCungCap.cs" />
     <Compile Include="DTO\HangHoa.cs" />
+    <Compile Include="DTO\NhaCungCap.cs" />
+    <Compile Include="DTO\SanPham.cs" />
     <Compile Include="Frm_Base.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,11 +150,11 @@
     <Compile Include="TacVu\Frm_NhapKho_Main.Designer.cs">
       <DependentUpon>Frm_NhapKho_Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="TacVu\Frm_QuanLyNhapKho.cs">
+    <Compile Include="TacVu\Frm_NhapKho_Modifies.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TacVu\Frm_QuanLyNhapKho.Designer.cs">
-      <DependentUpon>Frm_QuanLyNhapKho.cs</DependentUpon>
+    <Compile Include="TacVu\Frm_NhapKho_Modifies.Designer.cs">
+      <DependentUpon>Frm_NhapKho_Modifies.cs</DependentUpon>
     </Compile>
     <Compile Include="TacVu\Frm_XuatKho_Main.cs">
       <SubType>Form</SubType>
@@ -140,11 +162,20 @@
     <Compile Include="TacVu\Frm_XuatKho_Main.Designer.cs">
       <DependentUpon>Frm_XuatKho_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="TacVu\Frm_XuatKho_Modifies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TacVu\Frm_XuatKho_Modifies.Designer.cs">
+      <DependentUpon>Frm_XuatKho_Modifies.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DanhMuc\Frm_DSHangHoa_Main.resx">
       <DependentUpon>Frm_DSHangHoa_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DanhMuc\Frm_DSNhaCungCap_Main.resx">
       <DependentUpon>Frm_DSNhaCungCap_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DanhMuc\Frm_DSNhaSX_Main.resx">
+      <DependentUpon>Frm_DSNhaSX_Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DanhMuc\Frm_QuanLyHangHoa_Modifies.resx">
       <DependentUpon>Frm_QuanLyHangHoa_Modifies.cs</DependentUpon>
@@ -173,8 +204,14 @@
     <EmbeddedResource Include="TacVu\Frm_NhapKho_Main.resx">
       <DependentUpon>Frm_NhapKho_Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TacVu\Frm_QuanLyNhapKho.resx">
-      <DependentUpon>Frm_QuanLyNhapKho.cs</DependentUpon>
+    <EmbeddedResource Include="TacVu\Frm_NhapKho_Modifies.resx">
+      <DependentUpon>Frm_NhapKho_Modifies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TacVu\Frm_XuatKho_Main.resx">
+      <DependentUpon>Frm_XuatKho_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TacVu\Frm_XuatKho_Modifies.resx">
+      <DependentUpon>Frm_XuatKho_Modifies.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

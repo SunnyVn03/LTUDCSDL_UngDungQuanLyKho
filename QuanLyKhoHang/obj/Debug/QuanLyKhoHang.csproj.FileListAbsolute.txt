@@ -13,3 +13,25 @@ D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\bin\Debug\DevComponents.DotNetBa
 D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_DSHangHoa_Main.resources
 D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Frm_Base.resources
 D:\Lập trình ứng dụng CSDL\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.CopyComplete
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.AssemblyReference.cache
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_DSHangHoa_Main.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Frm_Base.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Frm_DangNhap.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Frm_Main.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.Properties.Resources.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.GenerateResource.cache
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.CoreCompileInputs.cache
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.exe
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.pdb
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\bin\Debug\QuanLyKhoHang.exe.config
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\bin\Debug\QuanLyKhoHang.exe
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\bin\Debug\QuanLyKhoHang.pdb
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.csproj.CopyComplete
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_DSNhaCungCap_Main.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_QuanLyNhaCungCap_Modifies.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.TacVu.Frm_NhapKho_Main.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.TacVu.Frm_NhapKho_Modifies.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.TacVu.Frm_XuatKho_Main.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.TacVu.Frm_XuatKho_Modifies.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_DSNhaSX_Main.resources
+C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_QuanLyHangHoa_Modifies.resources
