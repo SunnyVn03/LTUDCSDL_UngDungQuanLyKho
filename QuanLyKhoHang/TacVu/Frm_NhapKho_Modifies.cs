@@ -34,7 +34,7 @@ namespace QuanLyKhoHang.TacVu
             lblNhanVien.Text = Cls_Main.tenNhanVien;
             DataTable dt = new DataTable();
             dt = bd.LayPhieuNhapLonNhat(ref err);
-            if (dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0 && dt.Rows[0]["MaPhieuNhap"].ToString() != "")
             {
                 lblMaPhieuNhap.Text = dt.Rows[0]["MaPhieuNhap"].ToString();
             }
