@@ -18,28 +18,59 @@ namespace QuanLyKhoHang.TacVu
             InitializeComponent();
         }
         BLL_XuatKho bd;
+        BLL_HangHoa bd1;
+        DataTable dtHangHoa;
         string err = string.Empty;
         bool daThemPhieuXuat = false;
+        public bool edit = false;
+        public string maPX = "";
         private void Frm_XuatKho_Modifies_Load(object sender, EventArgs e)
         {
             daThemPhieuXuat = false;
+            bd1 = new BLL_HangHoa(Cls_Main.path);
             bd = new BLL_XuatKho(Cls_Main.path);
             HienThiDuLieuXuatHang();
+            HienThiDSHangHoa();
         }
 
+        private void HienThiDSHangHoa()
+        {
+            try
+            {
+                dtHangHoa = new DataTable();
+                dtHangHoa = bd1.LayDSHangHoa(ref err, "0");
+
+                dsHangHoa.DataSource = dtHangHoa.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+                lblErr.Text = err;
+            }
+
+        }
         private void HienThiDuLieuXuatHang()
         {
             HienThiDuLieuNhaCungCap();
             lblNhanVien.Text = Cls_Main.tenNhanVien;
             DataTable dt = new DataTable();
-            dt = bd.LayPhieuXuatLonNhat(ref err);
-            if (dt.Rows.Count > 0 && dt.Rows[0]["MaPhieuNhap"].ToString() != "")
+            if (edit)
             {
-                lblMaPhieuXuat.Text = dt.Rows[0]["MaPhieuXuat"].ToString();
+                lblMaPhieuXuat.Text = maPX;
+                daThemPhieuXuat = true;
+                HienThiDuLieuChiTietPhieuXuat(lblMaPhieuXuat.Text);
             }
             else
             {
-                lblMaPhieuXuat.Text = "1";
+                dt = bd.LayPhieuXuatLonNhat(ref err);
+                if (dt.Rows.Count > 0 && dt.Rows[0]["MaPhieuXuat"].ToString() != "")
+                {
+                    lblMaPhieuXuat.Text = dt.Rows[0]["MaPhieuXuat"].ToString();
+                }
+                else
+                {
+                    lblMaPhieuXuat.Text = "1";
+                }
             }
         }
 
@@ -83,16 +114,31 @@ namespace QuanLyKhoHang.TacVu
             if (cboTenHang.SelectedIndex >= 0)
             {
                 {
+                    string er = err;
                     if (!daThemPhieuXuat)
                     {
                         bd.ThemPhieuXuat(ref err, lblMaPhieuXuat.Text, Cls_Main.maNhanVien);
+                        if (er != err)
+                        {
+                            lblErr.Text = err;
+                            er = err;
+                        }
                         daThemPhieuXuat = true;
                     }
                     //kiểm tra thêm vế sl, dongia, donvitinh.
                     if (bd.ThemChiTietPhieuXuat(ref err, lblMaPhieuXuat.Text, cboTenHang.SelectedValue.ToString(), txtSoLuongXuat.Text) >= 1)
                     {
                         MessageBox.Show("Thêm thành công");
+                        if (er != err)
+                        {
+                            lblErr.Text = err;
+                        }
                         HienThiDuLieuChiTietPhieuXuat(lblMaPhieuXuat.Text);
+                        HienThiDSHangHoa();
+                    }
+                    if (er != err)
+                    {
+                        lblErr.Text = err;
                     }
                 }
             }
@@ -108,11 +154,33 @@ namespace QuanLyKhoHang.TacVu
             dtChiTietPhieuXuat = new DataTable();
             dtChiTietPhieuXuat = bd.LayChiTietPhieuXuat(ref err, maPhieuXuat);
 
-            dgvCTPN.DataSource = dtChiTietPhieuXuat.DefaultView;
+            dgvCTPX.DataSource = dtChiTietPhieuXuat.DefaultView;
         }
-        private void btnHuy_Click(object sender, EventArgs e)
+
+        private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (dgvCTPX.SelectedRows.Count != 0)
+            {
+                if (bd.XoaCTPXTheoID(ref err, lblMaPhieuXuat.Text, dgvCTPX.SelectedRows[0].Cells["colMaHang"].Value.ToString()) != 1)
+                {
+                    MessageBox.Show(err);
+                }
+                else
+                {
+                    MessageBox.Show("Xóa thành công");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Chưa chọn hàng hoá.");
+            }
+            HienThiDSHangHoa();
+            HienThiDuLieuChiTietPhieuXuat(lblMaPhieuXuat.Text);
         }
     }
 }

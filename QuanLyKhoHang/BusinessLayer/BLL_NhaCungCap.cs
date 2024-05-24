@@ -38,13 +38,25 @@ namespace QuanLyKhoHang.BusinessLayer
             };
             return db.MyExcuteNonQuery(ref err, "NhaCungCap_InsertAndUpdate", CommandType.StoredProcedure, sqlParameters);
         }
+
+        public object SinhMaLonNhat(ref string err)
+        {
+            return db.MyExcuteScalar(ref err, "NhaCungCap_LayMaNhaCungCap", CommandType.StoredProcedure, null);
+        }
+
+        internal int XoaNhaCungCapTheoID(ref string err, string maNhaCungCap)
         {
             try
             {
                 SqlParameter[] sqlParameters = new SqlParameter[] {
                     new SqlParameter("@MaNhaCungCap", maNhaCungCap)
                 };
+                string er = err;
                 db.GetDataTable(ref err, "NhaCungCap_Delete", CommandType.StoredProcedure, sqlParameters);
+                if (err != er)
+                {
+                    return 0;
+                }
                 return 1;
             }
             catch (Exception e)

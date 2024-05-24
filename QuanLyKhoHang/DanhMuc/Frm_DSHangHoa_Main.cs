@@ -1,4 +1,4 @@
-using QuanLyHangHoa.BusinessLayer;
+﻿using QuanLyKhoHang.BusinessLayer;
 using QuanLyKhoHang.DTO;
 using System;
 using System.Collections.Generic;
@@ -44,6 +44,7 @@ namespace QuanLyKhoHang.DanhMuc
                 dtHangHoa = bd.LayDSHangHoa(ref err, "0");
 
                 dsHangHoa.DataSource = dtHangHoa.DefaultView;
+                cboThuocTinh.Items.Clear();
                 foreach (DataColumn item in dtHangHoa.Columns)
                 {
                     cboThuocTinh.Items.Add(item.ColumnName);
@@ -117,7 +118,6 @@ namespace QuanLyKhoHang.DanhMuc
                                 dv.RowFilter = string.Format("{0} >= {1}", cboThuocTinh.Text, txtTimKiem.Text);
                             break;
                         }
-
                         catch (Exception er)
                         {
                             MessageBox.Show("Chỉ nhập số");
@@ -130,7 +130,6 @@ namespace QuanLyKhoHang.DanhMuc
                                 dv.RowFilter = string.Format("{0} >= {1}", cboThuocTinh.Text, txtTimKiem.Text);
                             break;
                         }
-
                         catch (Exception er)
                         {
                             MessageBox.Show("Chỉ nhập số");
@@ -143,7 +142,6 @@ namespace QuanLyKhoHang.DanhMuc
                                 dv.RowFilter = string.Format("{0} >= {1}", cboThuocTinh.Text, txtTimKiem.Text);
                             break;
                         }
-
                         catch (Exception er)
                         {
                             MessageBox.Show("Chỉ nhập số");

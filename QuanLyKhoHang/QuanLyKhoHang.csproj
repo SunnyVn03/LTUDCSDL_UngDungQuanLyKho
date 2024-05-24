@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>QuanLyKhoHang</RootNamespace>
     <AssemblyName>QuanLyKhoHang</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -27,6 +27,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -83,29 +84,10 @@
       <DependentUpon>Frm_DSHangHoa_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="DanhMuc\Frm_DSNhaCungCap_Main.cs">
-
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DanhMuc\Frm_DSNhaCungCap_Main.Designer.cs">
       <DependentUpon>Frm_DSNhaCungCap_Main.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DanhMuc\Frm_DSNhaSX_Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DanhMuc\Frm_DSNhaCungCap_Main.Designer.cs">
-      <DependentUpon>Frm_DSNhaCungCap_Main.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DanhMuc\Frm_QuanLyHangHoa_Modifies.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DanhMuc\Frm_QuanLyHangHoa_Modifies.Designer.cs">
-      <DependentUpon>Frm_QuanLyHangHoa_Modifies.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DanhMuc\Frm_QuanLyNhaCungCap_Modifies.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DanhMuc\Frm_QuanLyNhaCungCap_Modifies.Designer.cs">
-      <DependentUpon>Frm_QuanLyNhaCungCap_Modifies.cs</DependentUpon>
     </Compile>
     <Compile Include="DanhMuc\Frm_QuanLyHangHoa_Modifies.cs">
       <SubType>Form</SubType>
@@ -174,9 +156,6 @@
     <EmbeddedResource Include="DanhMuc\Frm_DSNhaCungCap_Main.resx">
       <DependentUpon>Frm_DSNhaCungCap_Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DanhMuc\Frm_DSNhaSX_Main.resx">
-      <DependentUpon>Frm_DSNhaSX_Main.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DanhMuc\Frm_QuanLyHangHoa_Modifies.resx">
       <DependentUpon>Frm_QuanLyHangHoa_Modifies.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +179,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="TacVu\Frm_NhapKho_Main.resx">
       <DependentUpon>Frm_NhapKho_Main.cs</DependentUpon>

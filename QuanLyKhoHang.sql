@@ -102,11 +102,11 @@ End
 Go
 
 -- hiện thị thông tin hàng hoá
-Create proc HangHoa_Select
+create proc HangHoa_Select
 @MaHang int = 1
 as
-	Select MaHang,TenHang,LoaiHang,SoLuongTon,MaNhaCungCap
-	from [dbo].[HangHoa]
+	Select MaHang,TenHang,LoaiHang,SoLuongTon,TenNhaCungCap, a.MaNhaCungCap
+	from [dbo].[HangHoa] a join [dbo].[NhaCungCap] b on a.MaNhaCungCap = b.MaNhaCungCap
 	where @MaHang=Case @MaHang when 0 then @MaHang else @MaHang 
 end
 Go
@@ -160,7 +160,7 @@ Create proc HangHoa_Delete
 @MaHang int
 as
 	Delete HangHoa
-	where MaHang=@MaHang
+	where MaHang=5
 Go
 
 -- xoá nhà cung cấp
@@ -220,6 +220,13 @@ where NgayNhap between @TuNgay and @DenNgay
 group by a.MaPhieuNhap, NgayNhap, a.MaNhanVien,TenNhanVien
 go
 
+create proc PhieuNhap_SelectAll
+as
+select ROW_NUMBER() over (order by (select 1)) as STT ,a.MaPhieuNhap, NgayNhap, a.MaNhanVien,TenNhanVien
+from PhieuNhap a  join NhanVien b on b.MaNhanVien=a.MaNhanVien
+group by a.MaPhieuNhap, NgayNhap, a.MaNhanVien,TenNhanVien
+go
+
 -- Phương thức Insert mã phiếu xuất vào bảng phiếu xuất
 Create proc PhieuXuat_Insert
 @MaPhieuXuat int,
@@ -266,6 +273,13 @@ as
 select ROW_NUMBER() over (order by (select 1)) as STT ,a.MaPhieuXuat, NgayXuat, a.MaNhanVien,TenNhanVien
 from PhieuXuat a  join NhanVien b on b.MaNhanVien=a.MaNhanVien
 where NgayXuat between @TuNgay and @DenNgay
+group by a.MaPhieuXuat, NgayXuat, a.MaNhanVien,TenNhanVien
+go
+
+create proc PhieuXuat_SelectAll
+as
+select ROW_NUMBER() over (order by (select 1)) as STT ,a.MaPhieuXuat, NgayXuat, a.MaNhanVien,TenNhanVien
+from PhieuXuat a  join NhanVien b on b.MaNhanVien=a.MaNhanVien
 group by a.MaPhieuXuat, NgayXuat, a.MaNhanVien,TenNhanVien
 go
 
@@ -341,6 +355,19 @@ ON ChiTietPhieuXuat
 AFTER INSERT
 AS
 BEGIN
+	IF EXISTS (
+        SELECT 1
+        FROM inserted i
+        INNER JOIN HangHoa hh ON i.MaHang = hh.MaHang
+        WHERE i.SoLuongXuat > hh.SoLuongTon
+    )
+    BEGIN
+        -- Rollback the transaction if the condition is violated
+        ROLLBACK;
+        -- Raise an error to inform the user
+        RAISERROR ('Cannot insert: SoLuongXuat is greater than SoLuongTon.', 16, 1);
+        RETURN;
+    END;
     UPDATE HangHoa
     SET SoLuongTon = SoLuongTon - i.SoLuongXuat
     FROM HangHoa hh
@@ -354,6 +381,20 @@ ON ChiTietPhieuXuat
 AFTER UPDATE
 AS
 BEGIN
+	IF EXISTS (
+        SELECT 1
+        FROM inserted i
+        INNER JOIN deleted d ON i.MaHang = d.MaHang AND i.MaPhieuXuat = d.MaPhieuXuat
+        INNER JOIN HangHoa hh ON i.MaHang = hh.MaHang
+        WHERE hh.SoLuongTon - (i.SoLuongXuat - d.SoLuongXuat) < 0
+    )
+    BEGIN
+        -- Rollback the transaction if the condition is violated
+        ROLLBACK;
+        -- Raise an error to inform the user
+        RAISERROR ('Cannot update: SoLuongXuat results in negative SoLuongTon.', 16, 1);
+        RETURN;
+    END;
     UPDATE [dbo].[HangHoa]
     SET SoLuongTon = hh.SoLuongTon - (i.SoLuongXuat - d.SoLuongXuat)
     FROM HangHoa hh
@@ -373,4 +414,22 @@ BEGIN
     FROM HangHoa hh
     INNER JOIN deleted d ON hh.MaHang = d.MaHang;
 END;
+Go
+
+----Thao tác trên bảng CTPX----
+Create proc CTPX_Delete
+@MaPhieuXuat int,
+@MaHang int
+as
+	Delete ChitietPhieuXuat
+	where MaPhieuXuat = @MaPhieuXuat and MaHang = @MaHang
+Go
+
+----Thao tác trên bảng CTPN----
+Create proc CTPN_Delete
+@MaPhieuNhap int,
+@MaHang int
+as
+	Delete ChitietPhieuNhap
+	where MaPhieuNhap = @MaPhieuNhap and MaHang = @MaHang
 Go

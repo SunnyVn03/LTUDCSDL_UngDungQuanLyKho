@@ -46,7 +46,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgvDanhSachPhieuNhap = new System.Windows.Forms.DataGridView();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaPhieuNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaPhieuNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMaNhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTenNhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNgayNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -189,19 +189,21 @@
             this.dgvDanhSachPhieuNhap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSachPhieuNhap.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
-            this.MaPhieuNhap,
+            this.colMaPhieuNhap,
             this.colMaNhanVien,
             this.colTenNhanVien,
             this.colNgayNhap});
             this.dgvDanhSachPhieuNhap.Location = new System.Drawing.Point(3, 63);
             this.dgvDanhSachPhieuNhap.Margin = new System.Windows.Forms.Padding(2);
             this.dgvDanhSachPhieuNhap.Name = "dgvDanhSachPhieuNhap";
+            this.dgvDanhSachPhieuNhap.ReadOnly = true;
             this.dgvDanhSachPhieuNhap.RowHeadersVisible = false;
             this.dgvDanhSachPhieuNhap.RowHeadersWidth = 51;
             this.dgvDanhSachPhieuNhap.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvDanhSachPhieuNhap.RowTemplate.Height = 24;
             this.dgvDanhSachPhieuNhap.Size = new System.Drawing.Size(1181, 349);
             this.dgvDanhSachPhieuNhap.TabIndex = 3;
+            this.dgvDanhSachPhieuNhap.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDanhSachPhieuNhap_CellMouseDoubleClick);
             // 
             // STT
             // 
@@ -211,16 +213,18 @@
             this.STT.HeaderText = "STT";
             this.STT.MinimumWidth = 6;
             this.STT.Name = "STT";
+            this.STT.ReadOnly = true;
             this.STT.Width = 53;
             // 
-            // MaPhieuNhap
+            // colMaPhieuNhap
             // 
-            this.MaPhieuNhap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.MaPhieuNhap.DataPropertyName = "MaPhieuNhap";
-            this.MaPhieuNhap.HeaderText = "PhieuNhap";
-            this.MaPhieuNhap.MinimumWidth = 6;
-            this.MaPhieuNhap.Name = "MaPhieuNhap";
-            this.MaPhieuNhap.Width = 85;
+            this.colMaPhieuNhap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colMaPhieuNhap.DataPropertyName = "MaPhieuNhap";
+            this.colMaPhieuNhap.HeaderText = "Mã phiếu nhập";
+            this.colMaPhieuNhap.MinimumWidth = 6;
+            this.colMaPhieuNhap.Name = "colMaPhieuNhap";
+            this.colMaPhieuNhap.ReadOnly = true;
+            this.colMaPhieuNhap.Width = 95;
             // 
             // colMaNhanVien
             // 
@@ -228,7 +232,8 @@
             this.colMaNhanVien.DataPropertyName = "MaNhanVien";
             this.colMaNhanVien.HeaderText = "Mã nhân viên";
             this.colMaNhanVien.Name = "colMaNhanVien";
-            this.colMaNhanVien.Width = 97;
+            this.colMaNhanVien.ReadOnly = true;
+            this.colMaNhanVien.Width = 89;
             // 
             // colTenNhanVien
             // 
@@ -237,6 +242,7 @@
             this.colTenNhanVien.HeaderText = "Nhân Viên Nhập";
             this.colTenNhanVien.MinimumWidth = 6;
             this.colTenNhanVien.Name = "colTenNhanVien";
+            this.colTenNhanVien.ReadOnly = true;
             // 
             // colNgayNhap
             // 
@@ -245,6 +251,7 @@
             this.colNgayNhap.HeaderText = "Ngày nhập";
             this.colNgayNhap.MinimumWidth = 6;
             this.colNgayNhap.Name = "colNgayNhap";
+            this.colNgayNhap.ReadOnly = true;
             // 
             // dtpTuNgay
             // 
@@ -310,7 +317,7 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
         private System.Windows.Forms.ToolStripTextBox txtSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaPhieuNhap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMaPhieuNhap;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaNhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTenNhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgayNhap;

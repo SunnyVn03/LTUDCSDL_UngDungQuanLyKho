@@ -33,5 +33,4 @@ C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\D
 C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.TacVu.Frm_NhapKho_Modifies.resources
 C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.TacVu.Frm_XuatKho_Main.resources
 C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.TacVu.Frm_XuatKho_Modifies.resources
-C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_DSNhaSX_Main.resources
 C:\Users\PC\source\repos\SunnyVn03\LTUDCSDL_UngDungQuanLyKho\QuanLyKhoHang\obj\Debug\QuanLyKhoHang.DanhMuc.Frm_QuanLyHangHoa_Modifies.resources

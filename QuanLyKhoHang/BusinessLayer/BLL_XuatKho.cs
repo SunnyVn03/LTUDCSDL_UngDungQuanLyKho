@@ -54,6 +54,10 @@ namespace QuanLyKhoHang.BusinessLayer
             };
             return db.GetDataTable(ref err, "PhieuXuat_Select", CommandType.StoredProcedure, sqlParameters);
         }
+        public DataTable LayDuLieuPhieuXuat(ref string err)
+        {
+            return db.GetDataTable(ref err, "PhieuXuat_SelectAll", CommandType.StoredProcedure, null);
+        }
 
         public DataTable LayNhaCungCap(ref string err)
         {
@@ -71,6 +75,29 @@ namespace QuanLyKhoHang.BusinessLayer
         public DataTable LayPhieuXuatLonNhat(ref string err)
         {
             return db.GetDataTable(ref err, "PhieuXuat_LayMaxID", CommandType.StoredProcedure, null);
+        }
+
+        public int XoaCTPXTheoID(ref string err, string maPhieuXuat, string maHang)
+        {
+            try
+            {
+                SqlParameter[] sqlParameters = new SqlParameter[] {
+                    new SqlParameter("@MaPhieuXuat", int.Parse(maPhieuXuat)),
+                    new SqlParameter("@MaHang", int.Parse(maHang))
+                };
+                string er = err;
+                db.GetDataTable(ref err, "CTPX_Delete", CommandType.StoredProcedure, sqlParameters);
+                if (err != er)
+                {
+                    return 0;
+                }
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
         }
     }
 }

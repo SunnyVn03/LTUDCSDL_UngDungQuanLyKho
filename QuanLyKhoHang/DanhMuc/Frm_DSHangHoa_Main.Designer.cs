@@ -39,13 +39,14 @@
             this.cboThuocTinh = new System.Windows.Forms.ToolStripComboBox();
             this.btnthoat = new System.Windows.Forms.ToolStripButton();
             this.dsHangHoa = new System.Windows.Forms.DataGridView();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblErr = new System.Windows.Forms.ToolStripStatusLabel();
             this.colMaHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTenHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLoaiHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSoLuongTon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMaNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblErr = new System.Windows.Forms.ToolStripStatusLabel();
+            this.colTenNhaCungCap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsHangHoa)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -112,7 +113,7 @@
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(99, 33);
+            this.toolStripButton4.Size = new System.Drawing.Size(81, 33);
             this.toolStripButton4.Text = "Tìm kiếm:";
             // 
             // txtTimKiem
@@ -128,7 +129,7 @@
             // 
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(92, 33);
+            this.toolStripLabel1.Size = new System.Drawing.Size(74, 33);
             this.toolStripLabel1.Text = "Phân loại";
             // 
             // cboThuocTinh
@@ -145,7 +146,7 @@
             this.btnthoat.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnthoat.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.btnthoat.Name = "btnthoat";
-            this.btnthoat.Size = new System.Drawing.Size(86, 33);
+            this.btnthoat.Size = new System.Drawing.Size(73, 33);
             this.btnthoat.Text = "Thoát";
             this.btnthoat.Click += new System.EventHandler(this.btnthoat_Click);
             // 
@@ -158,12 +159,31 @@
             this.colTenHang,
             this.colLoaiHang,
             this.colSoLuongTon,
-            this.colMaNhaCungCap});
+            this.colMaNhaCungCap,
+            this.colTenNhaCungCap});
             this.dsHangHoa.Location = new System.Drawing.Point(0, 37);
             this.dsHangHoa.Name = "dsHangHoa";
             this.dsHangHoa.RowHeadersWidth = 51;
+            this.dsHangHoa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dsHangHoa.Size = new System.Drawing.Size(1180, 690);
             this.dsHangHoa.TabIndex = 1;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblErr});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 678);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1180, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblErr
+            // 
+            this.lblErr.Name = "lblErr";
+            this.lblErr.Size = new System.Drawing.Size(0, 17);
             // 
             // colMaHang
             // 
@@ -201,26 +221,16 @@
             // 
             this.colMaNhaCungCap.DataPropertyName = "MaNhaCungCap";
             this.colMaNhaCungCap.HeaderText = "Mã nhà cung cấp";
-            this.colMaNhaCungCap.MinimumWidth = 6;
             this.colMaNhaCungCap.Name = "colMaNhaCungCap";
-            this.colMaNhaCungCap.Width = 125;
+            this.colMaNhaCungCap.ReadOnly = true;
             // 
-            // statusStrip1
+            // colTenNhaCungCap
             // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblErr});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 678);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1180, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblErr
-            // 
-            this.lblErr.Name = "lblErr";
-            this.lblErr.Size = new System.Drawing.Size(0, 16);
+            this.colTenNhaCungCap.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colTenNhaCungCap.DataPropertyName = "TenNhaCungCap";
+            this.colTenNhaCungCap.HeaderText = "Nhà cung cấp";
+            this.colTenNhaCungCap.MinimumWidth = 6;
+            this.colTenNhaCungCap.Name = "colTenNhaCungCap";
             // 
             // Frm_DSHangHoa_Main
             // 
@@ -265,5 +275,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colLoaiHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSoLuongTon;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaNhaCungCap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTenNhaCungCap;
     }
 }

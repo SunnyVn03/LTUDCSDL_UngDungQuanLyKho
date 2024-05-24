@@ -10,7 +10,7 @@ using System.IO;
 using QuanLyKhoHang.DTO;
 using System.Data.SqlClient;
 
-namespace QuanLyHangHoa.BusinessLayer
+namespace QuanLyKhoHang.BusinessLayer
 {
     public class BLL_HangHoa
     {
@@ -42,14 +42,19 @@ namespace QuanLyHangHoa.BusinessLayer
             return _db.MyExcuteNonQuery(ref err, "HangHoa_InsertAndUpdate", CommandType.StoredProcedure, sqlParameters);
         }
 
-        internal int XoaHangHoaTheoID(ref string err, string maHang)
+        public int XoaHangHoaTheoID(ref string err, string maHang)
         {
             try
             {
                 SqlParameter[] sqlParameters = new SqlParameter[] {
-                    new SqlParameter("@MaHang", maHang)
+                    new SqlParameter("@MaHang", int.Parse(maHang))
                 };
+                string er = err;
                 _db.GetDataTable(ref err, "HangHoa_Delete", CommandType.StoredProcedure, sqlParameters);
+                if (err != er)
+                {
+                    return 0;
+                }
                 return 1;
             }
             catch (Exception e)

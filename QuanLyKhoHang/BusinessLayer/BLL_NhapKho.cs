@@ -23,7 +23,6 @@ namespace QuanLyKhoHang.BusinessLayer
             {
                 new SqlParameter("@MaPhieuNhap",int.Parse(maPhieuNhap)),
                 new SqlParameter("@MaNhanVien",int.Parse(maNhanVien))
-
             };
             return db.MyExcuteNonQuery(ref err, "PhieuNhap_Insert", CommandType.StoredProcedure, sqlParameters);
         }
@@ -35,7 +34,6 @@ namespace QuanLyKhoHang.BusinessLayer
                 new SqlParameter("@MaPhieuNhap",int.Parse(maPhieuNhap)),
                 new SqlParameter("@MaHang",int.Parse(maHang)),
                 new SqlParameter("@SoLuongNhap",int.Parse(soLuongNhap))
-
             };
             return db.MyExcuteNonQuery(ref err, "ChiTietPhieuNhap_InsertAndUpdate", CommandType.StoredProcedure, sqlParameters);
         }
@@ -58,6 +56,11 @@ namespace QuanLyKhoHang.BusinessLayer
             return db.GetDataTable(ref err, "PhieuNhap_Select", CommandType.StoredProcedure, sqlParameters);
         }
 
+        public DataTable LayDuLieuPhieuNhap(ref string err)
+        {
+            return db.GetDataTable(ref err, "PhieuNhap_SelectAll", CommandType.StoredProcedure, null);
+        }
+
         public DataTable LayNhaCungCap(ref string err)
         {
             return db.GetDataTable(ref err, "NhaCungCap_SelectToComboBox", CommandType.StoredProcedure, null);
@@ -75,5 +78,29 @@ namespace QuanLyKhoHang.BusinessLayer
         {
             return db.GetDataTable(ref err, "PhieuNhap_LayMaxID", CommandType.StoredProcedure, null);
         }
+
+        public int XoaCTPNTheoID(ref string err, string maPhieuNhap, string maHang)
+        {
+            try
+            {
+                SqlParameter[] sqlParameters = new SqlParameter[] {
+                    new SqlParameter("@MaPhieunhap", int.Parse(maPhieuNhap)),
+                    new SqlParameter("@MaHang", int.Parse(maHang))
+                };
+                string er = err;
+                db.GetDataTable(ref err, "CTPN_Delete", CommandType.StoredProcedure, sqlParameters);
+                if (err != er)
+                {
+                    return 0;
+                }
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
+        }
     }
+
 }

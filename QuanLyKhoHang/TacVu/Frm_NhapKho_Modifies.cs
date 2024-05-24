@@ -21,6 +21,8 @@ namespace QuanLyKhoHang.TacVu
         BLL_NhapKho bd;
         string err = string.Empty;
         bool daThemPhieuNhap = false;
+        public bool edit = false;
+        public string maPN = "";
         private void Frm_QuanLyNhapKho_Load(object sender, EventArgs e)
         {
             daThemPhieuNhap = false;
@@ -33,14 +35,23 @@ namespace QuanLyKhoHang.TacVu
             HienThiDuLieuNhaCungCap();
             lblNhanVien.Text = Cls_Main.tenNhanVien;
             DataTable dt = new DataTable();
-            dt = bd.LayPhieuNhapLonNhat(ref err);
-            if (dt.Rows.Count > 0 && dt.Rows[0]["MaPhieuNhap"].ToString() != "")
+            if (edit)
             {
-                lblMaPhieuNhap.Text = dt.Rows[0]["MaPhieuNhap"].ToString();
+                lblMaPhieuNhap.Text = maPN;
+                daThemPhieuNhap = true;
+                HienThiDuLieuChiTietPhieuNhap(lblMaPhieuNhap.Text);
             }
             else
             {
-                lblMaPhieuNhap.Text = "1";
+                dt = bd.LayPhieuNhapLonNhat(ref err);
+                if (dt.Rows.Count > 0 && dt.Rows[0]["MaPhieuNhap"].ToString() != "")
+                {
+                    lblMaPhieuNhap.Text = dt.Rows[0]["MaPhieuNhap"].ToString();
+                }
+                else
+                {
+                    lblMaPhieuNhap.Text = "1";
+                }
             }
         }
 
@@ -109,7 +120,28 @@ namespace QuanLyKhoHang.TacVu
 
             dgvCTPN.DataSource = dtChiTietPhieuNhap.DefaultView;
         }
-        private void btnHuy_Click(object sender, EventArgs e)
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (dgvCTPN.SelectedRows.Count != 0)
+            {
+                if (bd.XoaCTPNTheoID(ref err, lblMaPhieuNhap.Text, dgvCTPN.SelectedRows[0].Cells["colMaHang"].Value.ToString()) != 1)
+                {
+                    MessageBox.Show(err);
+                }
+                else
+                {
+                    MessageBox.Show("Xóa thành công");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Chưa chọn hàng hoá.");
+            }
+            HienThiDuLieuChiTietPhieuNhap(lblMaPhieuNhap.Text);
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
         }
